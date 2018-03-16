@@ -1,0 +1,31 @@
+apply plugin: 'com.android.library'
+
+group = 'com.qmuiteam'
+version = "1.0.8" // QMUI 发布到 bintray 的版本号
+
+android {
+    compileSdkVersion parent.ext.compileSdkVersion
+    buildToolsVersion parent.ext.buildToolsVersion
+    lintOptions {
+        abortOnError false
+    }
+
+    defaultConfig {
+        minSdkVersion parent.ext.minSdkVersion
+        targetSdkVersion parent.ext.targetSdkVersion
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile("com.android.support:recyclerview-v7:$supportVersion")
+    compile("com.android.support:appcompat-v7:$supportVersion")
+    compile("com.android.support:design:$supportVersion")
+    compile("com.android.support:support-vector-drawable:$supportVersion") // need Gradle Plugin v1.5.0 or above
+}
